@@ -1,0 +1,424 @@
+/* -------------------------------------------------------------------------- */
+/* GLOBAL STYLES                             */
+/* -------------------------------------------------------------------------- */
+
+body {
+    background-color: #004D40 !important; /* Colore di sfondo generale del body */
+}
+
+/* -------------------------------------------------------------------------- */
+/* CARD & FORM CONTAINER                       */
+/* -------------------------------------------------------------------------- */
+
+.card {
+    background-color: #0F2D2D; /* Sfondo del form */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordo sottile e leggermente trasparente */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5); /* Ombra pronunciata */
+}
+
+.card-body,
+.h2 {
+    color: #F8F9FA; /* Testo chiaro per il corpo della card e i titoli h2 */
+}
+
+/* -------------------------------------------------------------------------- */
+/* FORM LABELS                               */
+/* -------------------------------------------------------------------------- */
+
+/* Colore di base per tutte le label dei form */
+.form-label {
+    color: #F8F9FA; /* Testo grigio molto chiaro, quasi bianco */
+}
+
+/* Mantiene il colore chiaro per le label quando l'input/textarea associato è in focus, valido o invalido */
+.form-label:focus-within,
+.form-label:has(+ .form-control:valid),
+.form-label:has(+ .form-control:invalid),
+input.form-control:focus + .form-label,
+textarea.form-control:focus + .form-label, /* Aggiunto per textarea */
+.form-control.is-valid + .form-label,
+.form-control.is-invalid + .form-label,
+.modal-body .form-label /* Assicura che le label nelle modali siano chiare */
+{
+    color: #F8F9FA; /* Tutte le label in questi stati rimangono chiare */
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* FORM CONTROLS (INPUTS, TEXTAREAS, SELECTS) */
+/* -------------------------------------------------------------------------- */
+
+/* Stile generale per gli input, textarea con classe form-control */
+.form-control {
+    background-color: #1A3030; /* Verde scuro profondo per gli input */
+    color: #F8F9FA;             /* Testo chiaro per gli input */
+    border-color: rgba(255, 255, 255, 0.2); /* Bordo sottile trasparente */
+}
+
+/* Stile per il placeholder (testo suggerimento) */
+.form-control::placeholder {
+    color: rgba(248, 249, 250, 0.5); /* Grigio chiaro semi-trasparente */
+}
+
+/* Stile per gli input/textarea quando in focus */
+.form-control:focus {
+    background-color: #1A3030; /* Mantiene lo stesso sfondo in focus */
+    color: #F8F9FA;             /* Mantiene il testo chiaro in focus */
+    border-color: #5ED3C5 !important; /* Bordo ciano chiaro in focus (dal tuo logo) */
+    box-shadow: 0 0 0 0.25rem rgba(94, 211, 197, 0.25); /* Ombra luminosa in focus */
+}
+
+/* Stile per gli input disabilitati/readonly */
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #004D40; /* Verde scuro desiderato */
+    color: #ffffff;             /* Testo bianco per leggibilità */
+    opacity: 1;                  /* Assicura piena visibilità */
+    cursor: default;             /* Cursore a freccia */
+    border-color: #004D40;       /* Bordo dello stesso colore dello sfondo */
+}
+
+/* Stile per i dropdown (select) */
+.form-select {
+    background-color: #1A3030;
+    color: white; /* Testo leggibile */
+    border-color: #1A3030;
+}
+
+/* Stile per i dropdown in focus */
+.form-select:focus {
+    background-color: #1A3030;
+    color: white;
+    border-color: #1A3030;
+    box-shadow: 0 0 0 0.25rem rgba(26, 48, 48, 0.25);
+}
+
+/* -------------------------------------------------------------------------- */
+/* RADIO BUTTONS (Ordinante/Tecnico)         */
+/* -------------------------------------------------------------------------- */
+
+/* Applica il colore di sfondo verde scuro e il testo bianco agli elementi
+   del gruppo di selezione radio QUANDO NON SONO SELEZIONATI. */
+.form-selectgroup-input:not(:checked) + .form-selectgroup-label {
+    background-color: #1A3030; /* Sfondo verde scuro quando NON selezionato */
+    color: white;               /* Testo bianco quando NON selezionato */
+    border-color: #1A3030;      /* Bordo verde scuro quando NON selezionato */
+}
+
+/* Stile al passaggio del mouse (hover) sulle opzioni non selezionate */
+.form-selectgroup-item:not(:has(.form-selectgroup-input:checked)):hover .form-selectgroup-label {
+    background-color: #2a4040; /* Leggero scurimento al hover per non selezionato */
+    border-color: #2a4040;
+}
+
+/* Stile al focus (navigazione da tastiera) per le opzioni NON selezionate */
+.form-selectgroup-input:not(:checked):focus + .form-selectgroup-label {
+    box-shadow: 0 0 0 0.25rem rgba(26, 48, 48, 0.5); /* Ombra di focus con il tuo colore */
+    border-color: #1A3030; /* Bordo verde al focus */
+}
+
+/* -------------------------------------------------------------------------- */
+/* BUTTONS                                   */
+/* -------------------------------------------------------------------------- */
+
+/* Effetti comuni a tutti i bottoni */
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* Stile per i bottoni grandi (RICHIESTE, PROPOSTE, ORDINI) */
+.custom-btn-large {
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+    font-size: 22px;
+    transition: all 0.3s ease-in-out;
+    padding: 40px;
+}
+
+.custom-btn-large:hover {
+    transform: translateY(-8px) rotate(-2deg);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.3);
+}
+
+/* Modifica il colore di sfondo e del bordo del bottone btn-cyan */
+.btn-cyan {
+    background-color: #5ED3C5 !important; /* Il ciano acceso del tuo logo */
+    border-color: #5ED3C5 !important;
+    color: #1A3030 !important; /* Colore del testo sul bottone: verde scuro profondo per contrasto */
+}
+
+/* Stile del bottone btn-cyan in hover */
+.btn-cyan:hover {
+    background-color: #4CC1B2 !important;
+    border-color: #4CC1B2 !important;
+    color: #122424 !important;
+}
+
+/* Stile del bottone btn-cyan in active/focus */
+.btn-cyan:active,
+.btn-cyan:focus {
+    background-color: #4CC1B2 !important;
+    border-color: #4CC1B2 !important;
+    box-shadow: 0 0 0 0.25rem rgba(94, 211, 197, 0.5) !important;
+    color: #122424 !important;
+}
+
+/* Stile del bottone btn-cyan quando disabilitato */
+.btn-cyan:disabled {
+    background-color: #5ED3C5 !important;
+    border-color: #5ED3C5 !important;
+    opacity: 0.6;
+    cursor: not-allowed;
+    color: #1A3030 !important;
+}
+
+/* Stile per i bottoni secondari (es. "Annulla") */
+.btn-secondary {
+    background-color: #343a40 !important; /* Un grigio scuro */
+    border-color: #343a40 !important;
+    color: #F8F9FA !important; /* Testo chiaro */
+}
+
+/* Stile btn-secondary in hover */
+.btn-secondary:hover {
+    background-color: #495057 !important;
+    border-color: #495057 !important;
+    color: #ffffff !important;
+}
+
+/* Stile btn-secondary in focus */
+.btn-secondary:focus {
+    box-shadow: 0 0 0 0.25rem rgba(52, 58, 64, 0.5) !important;
+}
+
+/* Stile btn-secondary in active */
+.btn-secondary:active,
+.btn-secondary.active {
+    background-color: #212529 !important;
+    border-color: #212529 !important;
+    color: #ffffff !important;
+}
+
+/* Stile btn-secondary quando disabilitato */
+.btn-secondary:disabled {
+    background-color: #5ED3C5 !important; /* Questo colore non sembra appropriato per un disabled secondary */
+    border-color: #343a40 !important;
+    opacity: 0.6;
+    cursor: not-allowed;
+    color: #F8F9FA !important;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* INPUT GROUP (e.g., Show Password)         */
+/* -------------------------------------------------------------------------- */
+
+.input-group-text {
+    background-color: #1A3030 !important; /* Stesso sfondo degli input */
+    border-color: rgba(255, 255, 255, 0.2); /* Stesso bordo degli input */
+    color: #F8F9FA; /* Colore dell'icona: grigio chiaro */
+}
+
+.input-group-text .icon {
+    stroke: #F8F9FA; /* Colore del contorno dell'SVG */
+}
+
+.input-group-text a.link-secondary:hover {
+    color: #5ED3C5; /* Colore dell'icona in hover */
+}
+
+.input-group-text a.link-secondary:hover .icon {
+    stroke: #5ED3C5;
+}
+
+/* Bordo e ombra dell'intero gruppo quando un elemento al suo interno è in focus */
+.input-group:focus-within {
+    border-color: #5ED3C5 !important;
+    box-shadow: 0 0 0 0.25rem rgba(94, 211, 197, 0.25) !important;
+}
+
+.input-group:focus-within .form-control {
+    border-color: #5ED3C5 !important;
+}
+
+.input-group:focus-within .input-group-text {
+    background-color: #1A3030 !important;
+    color: #5ED3C5;
+    border-color: #5ED3C5 !important;
+}
+
+.input-group:focus-within .input-group-text .icon {
+    stroke: #5ED3C5 !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* NAVBAR                                   */
+/* -------------------------------------------------------------------------- */
+
+.navbar.navbar-expand-md {
+    background-color: #0F2D2D !important; /* Sfondo della navbar */
+}
+
+/* Stili per link e testo nella navbar */
+.navbar.navbar-expand-md .nav-link,
+.navbar.navbar-expand-md .text-reset,
+.navbar.navbar-expand-md .text-secondary {
+    color: #F8F9FA !important; /* Grigio chiaro per tutti i testi e link */
+}
+
+/* Stile per le icone SVG nella navbar */
+.navbar.navbar-expand-md .icon {
+    stroke: #F8F9FA !important;
+}
+
+/* Stile per i link della navbar in hover */
+.navbar.navbar-expand-md .nav-link:hover,
+.navbar.navbar-expand-md .text-reset:hover {
+    color: #5ED3C5 !important; /* Ciano chiaro del logo per l'hover */
+}
+
+/* Stile per l'icona SVG della navbar in hover */
+.navbar.navbar-expand-md .icon:hover {
+    stroke: #5ED3C5 !important;
+}
+
+/* Stile per il logo nella navbar */
+.navbar-brand img {
+    max-height: 100px;
+    width: auto !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DROPDOWN MENU (USER MENU)                   */
+/* -------------------------------------------------------------------------- */
+
+.dropdown-menu[data-bs-theme="light"] {
+    background-color: #F8F9FA !important; /* Sfondo chiaro per il dropdown */
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.dropdown-menu[data-bs-theme="light"] .dropdown-item {
+    color: #333333 !important; /* Testo scuro per gli elementi */
+}
+
+.dropdown-menu[data-bs-theme="light"] .dropdown-item:hover {
+    background-color: #E9ECEF !important; /* Sfondo leggermente più scuro in hover */
+    color: #000000 !important; /* Testo nero in hover */
+}
+
+/* -------------------------------------------------------------------------- */
+/* FOOTER                                  */
+/* -------------------------------------------------------------------------- */
+
+.footer {
+    background-color: #0F2D2D !important; /* Stesso verde scuro dell'header */
+    color: #F8F9FA !important; /* Testo chiaro */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Stile per i link nel footer */
+.footer .link-secondary {
+    color: #5ED3C5 !important; /* Ciano chiaro per i link */
+}
+
+.footer .link-secondary:hover {
+    color: #4CC1B2 !important;
+    text-decoration: underline;
+}
+
+/* Assicurati che il testo del copyright e della versione sia chiaro */
+.footer .list-inline-item {
+    color: #F8F9FA !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* TABLES                                   */
+/* -------------------------------------------------------------------------- */
+
+/* Stile per l'intestazione della tabella (thead) */
+.table thead {
+    background-color: #004D40 !important;
+    color: #F8F9FA;
+}
+
+/* Stile per le celle dell'intestazione (th) */
+.table thead th {
+    color: #F8F9FA;
+    padding: 12px 15px;
+    border-bottom: 2px solid #5ED3C5;
+    background-color: #004D40;
+}
+
+/* -------------------------------------------------------------------------- */
+/* MODALS                                  */
+/* -------------------------------------------------------------------------- */
+
+/* Stile per l'header della modale */
+.modal-header {
+    background-color: #0F2D2D;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Stile per il titolo della modale */
+.modal-header .modal-title {
+    color: #F8F9FA;
+}
+
+/* Stile per il bottone di chiusura (X) della modale */
+.modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.7;
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+/* Sfondo e bordo generale della modale */
+.modal-content {
+    background-color: #0F2D2D;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+/* Corpo della modale */
+.modal-body {
+    background-color: #0F2D2D;
+    color: #F8F9FA;
+}
+
+/* Footer della modale */
+.modal-footer {
+    background-color: #0F2D2D;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* MISC                                      */
+/* -------------------------------------------------------------------------- */
+
+.pallino{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background-color: #004D40;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.text-secondary{
+    color: #ffffff !important;
+}
+
+.text-muted{
+     color: #ffffff !important;
+
+}

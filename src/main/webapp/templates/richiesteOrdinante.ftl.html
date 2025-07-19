@@ -1,0 +1,103 @@
+<!-- Page body -->
+<div class="page-body">
+  <div class="container-xl">
+    <div class="row row-cards">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1>Le tue richieste</h1>
+        <a href="creaRichiesta" class="btn btn-cyan">
+          <!-- SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 5l0 14" />
+            <path d="M5 12l14 0" />
+          </svg>
+          Effettua richiesta
+        </a>
+      </div>
+      <div id="notification-container"></div>
+      <div class="col-12">
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table card-table table-vcenter text-nowrap datatable">
+              <thead>
+                <tr>
+                  <th class="w-1 text-center">Codice</th>
+                  <th class="text-center">Categoria</th>
+                  <th class="text-center">Tecnico</th>
+                  <th class="text-center">Data</th>
+                  <th class="text-center" data-sortable="true">Stato</th>
+                  <th class="text-end">Azioni</th>
+                </tr>
+              </thead>
+              <tbody>
+                <#-- Ciclo su tutte le richieste passate dalla Servlet -->
+                <#list richieste as r>
+                  <tr>
+                    <!-- Codice richiesta -->
+                    <td class="text-center">
+                      <span class="text-secondary">${r.codiceRichiesta}</span>
+                    </td>
+                    <td class="text-center">
+                      <span>${r.categoria.nome}</span>
+                    </td>
+                    <td class="text-center">
+                      <#if r.tecnico??>
+                        <span>
+                          ${r.tecnico.getUsername()} 
+                        </span>
+                      <#else>
+                        <span>Nessun tecnico assegnato</span>
+                      </#if>
+                    </td>
+                    <!-- Data -->
+                    <td class="text-center">
+                      <span data-order="${r.data?string('yyyy-MM-dd')}">
+                        ${r.data?string('dd/MM/yyyy')}
+                      </span>
+                    </td>
+                    <!-- Stato con pallino colorato in base al valore -->
+                    <td class="text-center">
+                      <#if r.stato?string == "RISOLTA">
+                        <span class="badge bg-success me-1"></span>Risolta
+                      <#elseif r.stato?string == "PRESA_IN_CARICO">
+                        <span class="badge bg-warning me-1"></span>Presa in carico
+                      <#elseif r.stato?string == "ORDINATA">
+                        <span class="badge bg-orange me-1"></span>Ordinata
+                      <#elseif r.stato?string == "IN_ATTESA">
+                        <span class="badge bg-danger me-1"></span>In attesa
+                      <#else>
+                        <span class="badge bg-secondary me-1"></span>Sconosciuto
+                      </#if>
+                    </td>
+                    <!--  link a pagina di dettaglio -->
+                    <td class="text-end">
+                      <span class="dropdown">
+                        <a href="dettaglioRichiesta?n=${r.key}" class="btn btn-cyan">Visualizza</a>
+                      </span>
+                    </td>
+                  </tr>
+                </#list>
+              <#if !richieste?? || richieste?size == 0>
+                <!-- Imposta colspan uguale al numero di colonne della tabella -->
+                 <td colspan="7" class="text-center">Nessuna richiesta trovata</td>
+               </tr>
+              </#if>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<#if richieste?has_content>
+<!-- jQuery (necessario per DataTables) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="scripts/dataTable.js"></script>
+</#if>

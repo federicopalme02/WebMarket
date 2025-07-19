@@ -1,0 +1,76 @@
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ProcureHub</title>
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="style/demo.css">
+  <link rel="stylesheet" href="style/demo.min.css">
+  <link rel="stylesheet" href="style/tabler.css">
+  <link rel="stylesheet" href="style/tabler.min.css">
+  <link rel="stylesheet" href="style/style.css">
+
+  <!-- JS files -->
+  <script src="scripts/demo-theme.min.js"></script>
+  <script src="scripts/tabler.min.js" defer></script>
+  <script src="scripts/demo.min.js" defer></script>
+  <script src="scripts/alert.js"></script>
+
+  <style>
+    @import url('https://rsms.me/inter/inter.css');
+
+  </style>
+</head>
+
+<body class="full-height">
+  <div id="notification-container" style="margin: 10px 300px;"></div>
+
+  <div class="page d-flex flex-column align-items-center justify-content-center vh-100 text-center px-3">
+    <div class="mb-4">
+      <img src="images/logo1.svg" alt="Login Image" class="img-fluid" style="width: 60%;">
+    </div>
+
+    <div class="container-tight w-100" style="max-width: 400px;">
+      <div class="card card-md">
+        <div class="card-body">
+          <h2 class="h2 text-center mb-4">Login to your account</h2>
+
+          <form action="login" method="post" autocomplete="off" novalidate>
+            <input type="hidden" name="referrer" value="http://localhost:8080/WebMarket/home">
+
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input type="text" class="form-control" name="username" placeholder="your username" required>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Password</label>
+              <div class="input-group input-group-flat">
+                <input type="password" class="form-control" name="password" placeholder="your password" required>
+                <span class="input-group-text">
+                  <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Show password" data-bs-original-title="Show password">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                      <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6 c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>
+                    </svg>
+                  </a>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <button type="submit" class="btn btn-cyan w-100" name="login" value="login" disabled>
+                Sign in
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<div class="page-wrapper">
+    <div class="page-body">
+        <div class="container-xl d-flex flex-column align-items-center py-0"> 
+            <div class="mb-2 text-center">
+                <img src="images/logo1.svg" alt="Logo" class="img-fluid" style="max-width: 300px;">
+            </div>
+
+            <div class="row w-100 mb-4 g-4">
+                <div class="col-md-4">
+                    <div class="text-center position-relative">
+                        <a href="elencoRichieste" class="btn btn-light w-100 py-4 custom-btn-large notifica-btn" data-tipo="richieste">
+                            <img src="images/richiesta.svg" class="img-fluid" style="max-width: 60px;">
+                            <#if richieste?? && richieste>
+                                <span class="pallino notifica-richieste"></span>
+                            </#if>
+                        </a>
+                        <div class="mt-2 fs-4">Richieste</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center position-relative">
+                        <a href="elencoProposte" class="btn btn-light w-100 py-4 custom-btn-large notifica-btn" data-tipo="proposte">
+                            <img src="images/proposta.svg" class="img-fluid" style="max-width: 60px;">
+                            <#if (proposteOrd?? && proposteOrd) || (proposteTec?? && proposteTec)>
+                                <span class="pallino notifica-proposte"></span>
+                            </#if>
+                        </a>
+                        <div class="mt-2 fs-4">Proposte</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center position-relative">
+                        <a href="elencoOrdini" class="btn btn-light w-100 py-4 custom-btn-large notifica-btn" data-tipo="ordini">
+                            <img src="images/ordine.svg" class="img-fluid" style="max-width: 60px;">
+                            <#if (ordiniOrd?? && ordiniOrd) || (ordiniTec?? && ordiniTec)>
+                                <span class="pallino notifica-ordini"></span>
+                            </#if>
+                        </a>
+                        <div class="mt-2 fs-4">Ordini</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="scripts/notifiche.js"></script>

@@ -1,0 +1,217 @@
+<!-- Page body -->
+<div class="page-body">
+  <div class="container-xl">
+    <!-- Sezione: RICHIESTE PRESE IN CARICO -->
+    <div class="row row-cards">
+      <h1>Richieste prese in carico</h1>
+      <div class="col-12">
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table card-table table-vcenter text-nowrap datatable">
+              <thead>
+                <tr>
+                  <th class="w-1 text-center">Codice</th>
+                  <th class="text-center">Categoria</th>
+                  <th class="text-center">Ordinante</th>
+                  <th class="text-center">Tecnico</th>
+                  <th class="text-center">Data</th>
+                  <th class="text-center">Stato</th>
+                  <th class="text-end">Dettagli richiesta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- RICHIESTE PRESE IN CARICO CON PROPOSTE -->
+                <#-- Verifica che la lista esista e non sia vuota -->
+                <#if (richiestePreseInCaricoConProposte?? && richiestePreseInCaricoConProposte?size > 0)>
+                  <#list richiestePreseInCaricoConProposte as r>
+                    <tr>
+                      <td class="text-center">
+                        <span class="text-secondary">${r.codiceRichiesta}</span>
+                      </td>
+                      <td class="text-center">
+                        ${r.categoria.nome}
+                      </td>
+                      <td class="text-center">
+                        ${r.ordinante.username} 
+                      </td>
+                      <td class="text-center">
+                        <#if r.tecnico??>
+                          ${r.tecnico.username} 
+                        <#else>
+                          Nessun tecnico assegnato
+                        </#if>
+                      </td>
+                      <td class="text-center">
+                        <#-- Formatta la data a piacere -->
+                        ${r.data}
+                      </td>
+                      <td class="text-center">
+                        <#-- Badge colorato in base allo stato -->
+                        <#if r.stato?string == "RISOLTA">
+                          <span class="badge bg-success me-1"></span>Risolta
+                        <#elseif r.stato?string == "PRESA_IN_CARICO">
+                          <span class="badge bg-warning me-1"></span>Presa in carico
+                        <#elseif r.stato?string == "ORDINATA">
+                          <span class="badge bg-orange me-1"></span>Ordinata
+                        <#elseif r.stato?string == "IN_ATTESA">
+                          <span class="badge bg-danger me-1"></span>In attesa
+                        <#else>
+                          <span class="badge bg-secondary me-1"></span>Sconosciuto
+                        </#if>
+                      </td>
+                      <td class="text-end">
+                        <a href="dettaglioRichiesta?n=${r.key}" class="btn btn-light active">Visualizza</a>
+                      </td>
+                    </tr>
+                  </#list>
+                <#else>
+                  <tr>
+                    <td colspan="7" class="text-center">
+                      Nessuna richiesta presa in carico con proposte
+                    </td>
+                  </tr>
+                </#if>
+                <!-- SEZIONE PER LE RICHIESTE SENZA PROPOSTE -->
+                <tr>
+                  <td colspan="7" class="text-center fw-bold text-danger">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M18 13l-6 6" /><path d="M6 13l6 6" /></svg>
+                    Richieste senza proposte o con proposte rifiutate
+                  </td>
+                </tr>
+                <!-- RICHIESTE PRESE IN CARICO SENZA PROPOSTE -->
+                <#if (richiestePreseInCaricoSenzaProposte?? && richiestePreseInCaricoSenzaProposte?size > 0)>
+                  <#list richiestePreseInCaricoSenzaProposte as r>
+                    <tr>
+                      <td class="text-center">
+                        <span class="text-secondary">${r.codiceRichiesta}</span>
+                      </td>
+                      <td class="text-center">
+                        ${r.categoria.nome}
+                      </td>
+                      <td class="text-center">
+                        ${r.ordinante.username} 
+                      </td>
+                      <td class="text-center">
+                        <#if r.tecnico??>
+                          ${r.tecnico.username}
+                        <#else>
+                          Nessun tecnico assegnato
+                        </#if>
+                      </td>
+                      <td class="text-center">
+                        ${r.data}
+                      </td>
+                      <td class="text-center">
+                        <#if r.stato?string == "RISOLTA">
+                          <span class="badge bg-success me-1"></span>Risolta
+                        <#elseif r.stato?string == "PRESA_IN_CARICO">
+                          <span class="badge bg-warning me-1"></span>Presa in carico
+                        <#elseif r.stato?string == "ORDINATA">
+                          <span class="badge bg-orange me-1"></span>Ordinata
+                        <#elseif r.stato?string == "IN_ATTESA">
+                          <span class="badge bg-danger me-1"></span>In attesa
+                        <#else>
+                          <span class="badge bg-secondary me-1"></span>Sconosciuto
+                        </#if>
+                      </td>
+                      <td class="text-end">
+                        <a href="dettaglioRichiesta?n=${r.key}" class="btn btn-light active">Visualizza</a>
+                      </td>
+                    </tr>
+                  </#list>
+                <#else>
+                  <tr>
+                    <td colspan="7" class="text-center">
+                      Nessuna richiesta presa in carico senza proposte
+                    </td>
+                  </tr>
+                </#if>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Spaziatore -->
+    <div class="row row-cards">
+      <div class="col-lg-8"></div>
+      <div class="col-lg-4"></div>
+      <div class="col-12"></div>
+    </div>
+
+    <!-- Sezione: RICHIESTE DA PRENDERE IN CARICO (IN ATTESA) -->
+    <div class="row row-cards">
+      <h1>Richieste da prendere in carico</h1>
+      <div class="col-12">
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table card-table table-vcenter text-nowrap datatable">
+              <thead>
+                <tr>
+                  <th class="w-1 text-center">Codice</th>
+                  <th class="text-center">Categoria</th>
+                  <th class="text-center">Ordinante</th>
+                  <th class="text-center">Tecnico</th>
+                  <th class="text-center">Data</th>
+                  <th class="text-center">Stato</th>
+                  <th class="text-end">Dettagli richiesta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <#-- RICHIESTE IN ATTESA (NON ANCORA PRESE IN CARICO) -->
+                <#if (richiesteInAttesa?? && richiesteInAttesa?size > 0)>
+                  <#list richiesteInAttesa as r>
+                    <tr>
+                      <td class="text-center">
+                        <span class="text-secondary">${r.codiceRichiesta}</span>
+                      </td>
+                      <td class="text-center">
+                        ${r.categoria.nome}
+                      </td>
+                      <td class="text-center">
+                        ${r.ordinante.getUsername()} 
+                      </td>
+                      <td class="text-center">
+                        <#if r.tecnico??>
+                          ${r.tecnico.getUsername()} 
+                        <#else>
+                          Nessun tecnico assegnato
+                        </#if>
+                      </td>
+                      <td class="text-center">
+                        ${r.data}
+                      </td>
+                      <td class="text-center">
+                        <#if r.stato?string == "RISOLTA">
+                          <span class="badge bg-success me-1"></span>Risolta
+                        <#elseif r.stato?string == "PRESA_IN_CARICO">
+                          <span class="badge bg-warning me-1"></span>Presa in carico
+                        <#elseif r.stato?string == "ORDINATA">
+                          <span class="badge bg-orange me-1"></span>Ordinata
+                        <#elseif r.stato?string == "IN_ATTESA">
+                          <span class="badge bg-danger me-1"></span>In attesa
+                        <#else>
+                          <span class="badge bg-secondary me-1"></span>Sconosciuto
+                        </#if>
+                      </td>
+                      <td class="text-end">
+                        <a href="dettaglioRichiesta?n=${r.key}" class="btn btn-light active">Visualizza</a>
+                      </td>
+                    </tr>
+                  </#list>
+                <#else>
+                  <tr>
+                    <td colspan="7" class="text-center">
+                      Nessuna richiesta da prendere in carico
+                    </td>
+                  </tr>
+                </#if>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div> 
