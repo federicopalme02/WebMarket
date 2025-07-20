@@ -36,17 +36,8 @@ public class ElencoOrdini extends BaseController {
     if (isOrdinante) {
         // Per l'ordinante, recupero gli ordini ricevuti
         java.util.List<Ordine> ordini = ((ApplicationDataLayer) request.getAttribute("datalayer")).getOrdineDAO().getOrdiniByOrdinante(user);
-        // Per ogni ordine, creo un flag che indica se mostrare il bottone "recensisci tecnico".
-        // Il bottone sarà visibile solo se lo stato della richiesta associata all'ordine è RISOLTA.
-         // Usiamo una mappa con chiavi STRINGA
-         java.util.Map<String, Boolean> recensisciFlags = new java.util.HashMap<>();
-         for (Ordine o : ordini) {
-             boolean showRecensisci = o.getProposta().getRichiesta().getStato().equals(StatoRichiesta.RISOLTA);
-             // Convertiamo la chiave in STRINGA
-             recensisciFlags.put(String.valueOf(o.getKey()), showRecensisci);
-         }
+
          request.setAttribute("ordini", ordini);
-         request.setAttribute("recensisciFlags", recensisciFlags);
     } else {
         // Per il tecnico, recupera gli ordini gestiti dal tecnico.
         request.setAttribute("ordini", ((ApplicationDataLayer) request.getAttribute("datalayer")).getOrdineDAO().getOrdiniByTecnico(user));

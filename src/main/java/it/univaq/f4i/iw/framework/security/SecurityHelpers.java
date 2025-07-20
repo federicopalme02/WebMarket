@@ -67,10 +67,6 @@ public class SecurityHelpers {
             return tipo.equals("tecnico");
         }
         
-        // Pagine esclusive per l'ordinante
-        if (requestedPage.contains("/crearichiesta") || requestedPage.contains("/recensiscitecnico")) {
-            return tipo.equals("ordinante");
-        }
         
         // Pagine comuni a tecnico e ordinante 
         if (requestedPage.contains("/home") ||

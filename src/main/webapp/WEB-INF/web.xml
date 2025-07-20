@@ -14,8 +14,7 @@
                      /aggiungiUtente,
                      /home,
                      /homeAdmin,
-                     /impostazioni,
-                     /recensisciTecnico
+                     /impostazioni
          </param-value>
     </context-param>
     <context-param>
@@ -118,10 +117,6 @@
         <servlet-name>CreaProposta</servlet-name>
         <servlet-class>it.univaq.f4i.iw.ex.webmarket.controller.CreaProposta</servlet-class>
     </servlet>
-     <servlet>
-        <servlet-name>RecensisciTecnico</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.ex.webmarket.controller.RecensisciTecnico</servlet-class>
-    </servlet>
     
 
 
@@ -185,10 +180,7 @@
         <servlet-name>Impostazioni</servlet-name>
         <url-pattern>/impostazioni</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RecensisciTecnico</servlet-name>
-        <url-pattern>/recensisciTecnico</url-pattern>
-    </servlet-mapping>
+
     
     
     

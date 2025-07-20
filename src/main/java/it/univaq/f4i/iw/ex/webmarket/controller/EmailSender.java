@@ -34,8 +34,7 @@ public class EmailSender {
 
             // Imposta l'oggetto e il corpo della email
             msg.setSubject(subject, "UTF-8");
-            msg.setText(body, "UTF-8");
-
+            msg.setContent(body, "text/html; charset=UTF-8");
             // Imposta la data di invio e il destinatario
             msg.setSentDate(new Date());
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
